@@ -1,0 +1,70 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1900" d:DesignHeight="450"
+        x:Class="chat.MainWindow"
+        Title="chat"
+		Width="700" Height="500"
+        WindowStartupLocation="CenterScreen">
+
+	
+	<DockPanel Margin="20">
+		<Grid ColumnDefinitions="Auto" RowDefinitions="Auto,Auto,Auto"  Margin="4">
+			<Grid ColumnDefinitions="Auto, Auto, Auto" RowDefinitions="Auto,Auto,Auto"  Margin="4" Grid.Row="0">
+		<ItemsControl Items="{Binding Table}" Grid.Row="0">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock
+                            Foreground="Red"
+							FontWeight ="500"
+                            Margin="5"
+							FontFamily="Montserrat"
+                            Text="{Binding Name}" />
+						<TextBlock
+							Foreground="#969696"
+							Margin="0, 0, 5,24"
+							Text="{Binding CreatedAt}" 
+							FontFamily="Montserrat"
+							FontSize ="8" />
+						<TextBlock>:</TextBlock>
+						<TextBlock
+                            Foreground="Black"
+                            Margin="5"
+							FontFamily="Montserrat"
+                            Text="{Binding Message}" />
+					</StackPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		</Grid>
+			
+		<Grid ColumnDefinitions="120,400,108" RowDefinitions="Auto,Auto,Auto"  Margin="4" Grid.Row="1">
+			<TextBox Height="32" Width="100"
+					AcceptsReturn="True"
+					TextWrapping="Wrap"
+					Grid.Row="1"
+					Grid.Column="0"
+					Name="NameTextBox"
+					 FontFamily="Montserrat"
+			/>
+			<TextBox Height="32" Width="400" 
+					 AcceptsReturn="True" 
+					 TextWrapping="Wrap" 
+					 Grid.Row="1" 
+					 Grid.Column="1"
+					 Name="MessageTextBox"
+					 FontFamily="Montserrat"
+			/>
+
+			<Button HorizontalAlignment="Right" Margin="10, 30,0,30"
+					DockPanel.Dock="Bottom"
+					FontFamily="Montserrat"
+					Grid.Row="1" Grid.Column="2" Click="Button_OnClick">
+				Отправить
+			</Button>
+			</Grid>
+		</Grid>
+	</DockPanel>
+</Window>
